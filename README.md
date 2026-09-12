@@ -1,21 +1,34 @@
 # RPG Character Builder (C++)
 
-A simple command-line RPG character builder written in C++. I created this project while learning C++ to practice object-oriented programming, input validation, modular program structure, and working with dynamic collections.
+A command-line RPG character builder written in C++. I created this project while learning C++ to practice object-oriented programming, input validation, modular program structure, constructors, and working with dynamic collections.
 
 ## Overview
 
-The program allows a user to create multiple RPG characters by entering a character name, selecting a character class, and assigning a health value.
+The program allows a user to create RPG characters by entering a name, selecting a character type, and assigning a health value.
 
-Created characters are stored in a roster using a `std::vector`, and the completed roster is displayed at the end of the program.
+The available character types are:
+
+* Warrior
+* Mage
+* Rogue
+
+Health values must be between 1 and 100.
+
+After creating the first character, the user can continue adding additional characters to a roster. The characters are stored using a `std::vector`, and the full roster is displayed when the user finishes.
 
 ## Features
 
 * Create multiple RPG characters
-* Choose from several character classes
-* Assign character health within an allowed range
-* Validate incorrect user input
-* Store characters dynamically using `std::vector`
-* Display a complete character roster
+* Choose between Warrior, Mage, and Rogue character types
+* Assign health values from 1 to 100
+* Validate invalid numerical input
+* Validate character type selections
+* Validate yes/no responses
+* Prevent blank character names
+* Store multiple characters using `std::vector`
+* Display individual character information
+* Display the complete character roster
+* Demonstrate both default and parameterized constructors
 * Separate program functionality across multiple header and source files
 
 ## C++ Concepts Practiced
@@ -23,7 +36,7 @@ Created characters are stored in a roster using a `std::vector`, and the complet
 This project helped me practice several core C++ concepts, including:
 
 * Classes and objects
-* Constructors
+* Default and parameterized constructors
 * Encapsulation
 * Getters and setters
 * Header and implementation files
@@ -37,7 +50,7 @@ This project helped me practice several core C++ concepts, including:
 ## Project Structure
 
 ```text
-Basic-RPG-character-builder/
+Basic-RPG-character-builder-/
 │
 ├── GameCharacter.h
 ├── GameCharacter.cpp
@@ -48,95 +61,77 @@ Basic-RPG-character-builder/
 
 ### `GameCharacter.h` / `GameCharacter.cpp`
 
-Defines the `GameCharacter` class and handles character information such as:
+Defines and implements the `GameCharacter` class.
+
+Each character contains:
 
 * Name
-* Character type
+* Type
 * Health
+
+The class includes a default constructor, parameterized constructor, setter methods, getter methods, and a function for displaying character information.
 
 ### `Validation.h` / `Validation.cpp`
 
-Contains reusable functions for validating user input and preventing invalid numerical selections.
+Contains reusable validation functions for:
+
+* Checking numerical input and allowed ranges
+* Confirming that a character type is Warrior, Mage, or Rogue
+* Validating yes/no responses
 
 ### `main.cpp`
 
-Controls the main program flow, creates characters, stores them in a vector, and displays the completed roster.
+Controls the main program flow.
+
+It prompts the user for character information, demonstrates both constructor approaches, stores characters in a `std::vector`, allows additional characters to be created, and displays the completed roster.
 
 ## Example Program Flow
 
 ```text
-RPG Character Builder
+Let's build your first character.
 
-Enter the number of characters you would like to create: 2
+Enter the character's name: Ragnar
+Enter the character's type (Warrior, Mage, or Rogue): Warrior
+Enter the character's health (1-100): 100
 
-Character 1
-
-Enter character name: Ragnar
-
-Select character type:
-1. Warrior
-2. Mage
-3. Archer
-
-Selection: 1
-
-Enter health: 100
-
-Character created successfully.
-
-Character 2
-
-Enter character name: Merlin
-
-Select character type:
-1. Warrior
-2. Mage
-3. Archer
-
-Selection: 2
-
-Enter health: 85
-
-Character created successfully.
-
-Character Roster
-----------------
-Name: Ragnar
-Class: Warrior
+Character created with default constructor + setters:
+--- Character Details ---
+Name:   Ragnar
+Type:   Warrior
 Health: 100
 
-Name: Merlin
-Class: Mage
+Character created with parameterized constructor:
+--- Character Details ---
+Name:   Ragnar
+Type:   Warrior
+Health: 100
+
+Add another character to the roster? (y/n): y
+Enter the character's name: Merlin
+Enter the character's type (Warrior, Mage, or Rogue): Mage
+Enter the character's health (1-100): 85
+
+Character added:
+--- Character Details ---
+Name:   Merlin
+Type:   Mage
+Health: 85
+
+Add another character to the roster? (y/n): n
+
+
+======= Full Character Roster (2) =======
+--- Character Details ---
+Name:   Ragnar
+Type:   Warrior
+Health: 100
+
+--- Character Details ---
+Name:   Merlin
+Type:   Mage
 Health: 85
 ```
 
 ## What I Learned
 
-This project helped reinforce how a larger program can be separated into multiple files instead of placing all functionality inside `main.cpp`.
-
-I also gained more experience with validating user input, creating reusable functions, designing a basic C++ class, and storing multiple objects inside a dynamic collection.
-
-## Future Improvements
-
-Possible improvements I may add as I continue learning C++ include:
-
-* Additional character attributes such as attack, defense, and level
-* More character classes
-* Character editing and deletion
-* Saving and loading characters from a file
-* Improved string and whitespace validation
-* Randomized character statistics
-* A basic combat system
-* Additional use of modern C++ practices
-
-## Purpose
-
-This repository is intended to document my progress learning C++ and demonstrate my understanding of programming fundamentals.
-
-It is maintained as a personal portfolio and learning project rather than as a solution for academic coursework.
-
-## Author
-
-**Jacob Borton**
-
-Business Administration / Cybersecurity student developing skills in programming, cybersecurity, and technology.
+This project helped reinforce how a C++ program can be separated into multiple files instead of placing a
