@@ -1,85 +1,142 @@
 # RPG Character Builder (C++)
 
-A console-based C++ application that walks a user through creating and managing a roster of role-playing game characters, validating inputs, and outputting formatted character details.
+A simple command-line RPG character builder written in C++. I created this project while learning C++ to practice object-oriented programming, input validation, modular program structure, and working with dynamic collections.
 
----
+## Overview
 
-## Encouragement for Learners
+The program allows a user to create multiple RPG characters by entering a character name, selecting a character class, and assigning a health value.
 
-If you are just getting started with C++, welcome! Learning C++ can feel intimidating at first. Before taking my first C++ class, I was genuinely scared of how difficult it might be. However, through hands-on project builds like this, I managed to earn a 97% final grade in the course. If I can do it, I know you can too. Taking on practical projects is one of the most rewarding ways to build your confidence and master programming fundamentals.
+Created characters are stored in a roster using a `std::vector`, and the completed roster is displayed at the end of the program.
 
-Feel free to use this repository however you would like:
+## Features
 
-- **As a learning reference:** Use this codebase to cross-check your logic, object structure, or input-validation loops if you are working on a similar assignment.
-- **As a practice playground:** Fork the repository, experiment with the code, add new features (such as inventory management or combat stats), or refactor it into your own custom creation.
+* Create multiple RPG characters
+* Choose from several character classes
+* Assign character health within an allowed range
+* Validate incorrect user input
+* Store characters dynamically using `std::vector`
+* Display a complete character roster
+* Separate program functionality across multiple header and source files
 
----
+## C++ Concepts Practiced
 
-## What It Demonstrates
+This project helped me practice several core C++ concepts, including:
 
-- **Object-Oriented Design** — A `GameCharacter` class with private data members (`name`, `type`, `health`) accessed exclusively via getter and setter methods.
-- **Multiple Constructors** — Demonstrates both a default constructor (paired with setters) and a parameterized constructor side-by-side.
-- **Input Validation** — A dedicated `Validation` module that catches blank names, non-numeric input, out-of-range health values, and restricted character types (`Warrior`, `Mage`, `Rogue`).
-- **Multi-File Structure** — Clean modular layout separating class declarations (`.h`), class definitions (`.cpp`), and helper utilities from `main.cpp`.
-- **Dynamic Collections** — Leverages `std::vector<GameCharacter>` to store and print a custom-sized roster at runtime.
+* Classes and objects
+* Constructors
+* Encapsulation
+* Getters and setters
+* Header and implementation files
+* Functions
+* Loops and conditional statements
+* Input validation
+* `std::vector`
+* Console input and output
+* Modular program design
 
----
+## Project Structure
 
-## Repository Files
-
-| File | Purpose |
-| --- | --- |
-| `main.cpp` | Program entry point; manages prompts and builds the character roster |
-| `GameCharacter.h` / `GameCharacter.cpp` | Class declaration and implementation for `GameCharacter` |
-| `Validation.h` / `Validation.cpp` | Reusable input-validation functions |
-
----
-
-## Build & Run
-
-### Command Line (g++)
-
-```bash
-g++ -o CharacterBuilder main.cpp GameCharacter.cpp Validation.cpp
-./CharacterBuilder
+```text
+Basic-RPG-character-builder/
+│
+├── GameCharacter.h
+├── GameCharacter.cpp
+├── Validation.h
+├── Validation.cpp
+└── main.cpp
 ```
 
-### Visual Studio (Windows)
+### `GameCharacter.h` / `GameCharacter.cpp`
 
-**Installing Visual Studio**
+Defines the `GameCharacter` class and handles character information such as:
 
-If you do not have Visual Studio installed yet:
+* Name
+* Character type
+* Health
 
-1. Download the free [Visual Studio Community Edition](https://visualstudio.microsoft.com/vs/community/).
-2. During installation in the Visual Studio Installer, make sure to check the workload box for **Desktop development with C++**.
+### `Validation.h` / `Validation.cpp`
 
-> **Beginner Tip:** If the interface feels overwhelming, search YouTube for "Visual Studio C++ beginner tutorial" to see how others set up their workspace. Don't be afraid to mess around with the buttons and menus — getting comfortable clicking around the IDE is one of the best ways to learn!
+Contains reusable functions for validating user input and preventing invalid numerical selections.
 
-**Running the Project**
+### `main.cpp`
 
-1. Open Visual Studio and select **Create a new project** → **C++ Console App** (or **Empty Project**).
-2. In Solution Explorer, right-click **Header Files** → **Add > Existing Item...** and select `GameCharacter.h` and `Validation.h`.
-3. Right-click **Source Files** → **Add > Existing Item...** and select `GameCharacter.cpp`, `Validation.cpp`, and `main.cpp`.
-4. Press **Ctrl + F5** (or click **Start Without Debugging**) to compile and run.
+Controls the main program flow, creates characters, stores them in a vector, and displays the completed roster.
 
----
+## Example Program Flow
 
-## Sample Output
+```text
+RPG Character Builder
 
-```
-Enter the character's name: Phillip
-Enter the character's type (Warrior, Mage, or Rogue): Rogue
-Enter the character's health (1-100): 100
+Enter the number of characters you would like to create: 2
 
-Character created with default constructor + setters:
---- Character Details ---
-Name:   Phillip
-Type:   Rogue
+Character 1
+
+Enter character name: Ragnar
+
+Select character type:
+1. Warrior
+2. Mage
+3. Archer
+
+Selection: 1
+
+Enter health: 100
+
+Character created successfully.
+
+Character 2
+
+Enter character name: Merlin
+
+Select character type:
+1. Warrior
+2. Mage
+3. Archer
+
+Selection: 2
+
+Enter health: 85
+
+Character created successfully.
+
+Character Roster
+----------------
+Name: Ragnar
+Class: Warrior
 Health: 100
 
-Character created with parameterized constructor:
---- Character Details ---
-Name:   Phillip
-Type:   Rogue
-Health: 100
+Name: Merlin
+Class: Mage
+Health: 85
 ```
+
+## What I Learned
+
+This project helped reinforce how a larger program can be separated into multiple files instead of placing all functionality inside `main.cpp`.
+
+I also gained more experience with validating user input, creating reusable functions, designing a basic C++ class, and storing multiple objects inside a dynamic collection.
+
+## Future Improvements
+
+Possible improvements I may add as I continue learning C++ include:
+
+* Additional character attributes such as attack, defense, and level
+* More character classes
+* Character editing and deletion
+* Saving and loading characters from a file
+* Improved string and whitespace validation
+* Randomized character statistics
+* A basic combat system
+* Additional use of modern C++ practices
+
+## Purpose
+
+This repository is intended to document my progress learning C++ and demonstrate my understanding of programming fundamentals.
+
+It is maintained as a personal portfolio and learning project rather than as a solution for academic coursework.
+
+## Author
+
+**Jacob Borton**
+
+Business Administration / Cybersecurity student developing skills in programming, cybersecurity, and technology.
